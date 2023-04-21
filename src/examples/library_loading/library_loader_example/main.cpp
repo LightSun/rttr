@@ -42,8 +42,15 @@ using namespace rttr;
     static string_view library_name("plugin_example_d");
 #endif
 
+extern void test_colorMap();
+
+#include "ColorMap.h"
+using Color = rttr_med::Color;
+using ColorMap = rttr_med::ColorMap;
+
 int main(int argc, char** argv)
 {
+    setbuf(stdout, NULL);
     library lib(library_name); // load the actual plugin
 
     if (!lib.load())
@@ -53,6 +60,8 @@ int main(int argc, char** argv)
     }
 
     {   // scope is important, because we have to free all data before we unload the library
+
+        test_colorMap();
 
         // print all classes contained in the library
         for (auto t : lib.get_types())

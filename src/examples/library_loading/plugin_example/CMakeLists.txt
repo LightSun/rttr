@@ -39,7 +39,11 @@ if (USE_PCH)
   activate_precompiled_headers("pch.h" SRC_FILES)
 endif()
 
-add_library(plugin_example SHARED ${SRC_FILES} ${HPP_FILES})
+add_library(plugin_example SHARED
+    ${SRC_FILES} ${HPP_FILES}
+    ColorMap.h
+    ColorMap.cpp
+)
 target_link_libraries(plugin_example RTTR::Core)
 set_target_properties(plugin_example PROPERTIES 
                       DEBUG_POSTFIX ${RTTR_DEBUG_POSTFIX}

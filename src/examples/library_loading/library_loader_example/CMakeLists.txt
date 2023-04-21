@@ -39,7 +39,11 @@ if (USE_PCH)
   activate_precompiled_headers("pch.h" SRC_FILES)
 endif()
 
-add_executable(library_loader_example ${SRC_FILES} ${HPP_FILES})
+add_executable(library_loader_example
+    ${SRC_FILES} ${HPP_FILES}
+    test_colorMap.cpp
+    ColorMap.h
+    )
 target_link_libraries(library_loader_example RTTR::Core)
 add_dependencies(library_loader_example plugin_example)
 
